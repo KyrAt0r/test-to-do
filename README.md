@@ -1,50 +1,89 @@
-# React + TypeScript + Vite
+# TodoApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TodoApp — это приложение для управления задачами, созданное с использованием React и TypeScript. Оно предоставляет пользователю возможность добавлять, удалять и управлять задачами с поддержкой фильтрации задач по статусу.
 
-Currently, two official plugins are available:
+## Основные функции
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Добавление новых задач.
+- Удаление задач.
+- Отметка выполнения задач.
+- Фильтрация задач (Все, Выполненные, Невыполненные).
+- Сохранение задач в `localStorage` для сохранения между сессиями пользователя.
 
-## Expanding the ESLint configuration
+## Структура проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Основные компоненты
 
-- Configure the top-level `parserOptions` property like this:
+- **TodoApp**: Главный компонент приложения, который содержит все элементы интерфейса и управляет состоянием.
+- **TodoContainer**: Контейнер для всех задач, стилизованный компонент.
+- **TodoCounter**: Отображает количество всех задач.
+- **TodoFilters**: Позволяет фильтровать задачи по статусу (все, выполненные, невыполненные).
+- **TodoInput**: Компонент для ввода новой задачи.
+- **TodoList**: Список задач, который включает отдельные элементы - **TodoItem**.
+- **Header**: Компонент, представляющий заголовок приложения.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname
-    }
-  }
-});
-```
+### Основные хуки
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **useTasks**: Хук для управления задачами. Включает функции для добавления, удаления и переключения статуса задачи. Использует `localStorage` для сохранения задач.
+- **useFilteredTasks**: Хук для фильтрации задач по статусу (все, выполненные, невыполненные).
+- **useInput**: Хук для управления вводом текста (используется в **TodoInput**).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+## Установка и запуск проекта
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules
-  }
-});
-```
+### Требования
+Для запуска приложения вам потребуется Node.js и npm (или Yarn).
+
+### Инструкции по установке
+
+1. **Клонируйте репозиторий**:
+   ```sh
+   git clone https://github.com/kyrat0r/test-to-do.git
+   ```
+    ```sh
+   cd test-to-do
+   ```
+
+2. **Установите зависимости**:
+   ```sh
+   npm install
+   ```
+
+3. **Запустите проект в режиме разработки**:
+   ```sh
+   npm run dev
+   ```
+
+4. **Откройте приложение в браузере**:
+   Перейдите в браузере по адресу `http://localhost:5174/test-to-do`.
+
+## Скрипты
+
+- **dev**: Запуск проекта в режиме разработки с использованием Vite.
+- **build**: Сборка проекта для продакшн.
+- **test**: Запуск тестов с использованием Vitest.
+- **lint-fix**: Запуск ESLint с автоматическим исправлением ошибок.
+- **format**: Форматирование кода с помощью Prettier.
+- **preview**: Предпросмотр собранного проекта.
+- **deploy**: Сборка проекта и деплой на GitHub Pages.
+
+## Технологии
+
+- **React** 18.3.1
+- **TypeScript** \~5.6.2
+- **Tailwind CSS** 3.4.14
+- **Vite** 5.4.10
+- **Vitest** для тестирования компонентов
+- **ESLint** и **Prettier** для линтинга и форматирования кода
+
+## Структура кода
+
+- **components/Todo**: Компоненты, относящиеся к функциональности задач.
+- **components/UI**: Вспомогательные UI-компоненты, такие как заголовок.
+- **hooks**: Кастомные хуки для управления состоянием.
+- **interfaces**: Интерфейсы, используемые в проекте (например, `Task`).
+
+## Разработка
+
+Приложение использует функциональные компоненты и хуки React, а также TypeScript для типизации. В проекте настроен **Tailwind CSS** для стилизации и **ESLint** с **Prettier** для поддержки качественного кода.
+
+
