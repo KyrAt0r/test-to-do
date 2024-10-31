@@ -10,7 +10,9 @@ export default defineConfig({
     alias: {
       '@components': path.resolve(__dirname, './src/components'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@interfaces': path.resolve(__dirname, './src/interfaces')
+      '@interfaces': path.resolve(__dirname, './src/interfaces'),
+      '@shared/components': path.resolve(__dirname, './src/shared/components')
     }
-  }
+  },
+  base: '/test-to-do'
 });

@@ -1,7 +1,6 @@
+import { Button } from '@shared/components';
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'react-feather';
-
-import Button from '../../shared/components/Button.tsx';
 
 const ThemeButton = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {

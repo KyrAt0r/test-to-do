@@ -1,6 +1,5 @@
 import { useInput } from '@hooks';
-
-import Button from '../../shared/components/Button.tsx';
+import { Button } from '@shared/components';
 
 interface TodoInputProps {
   addTask: (text: string) => void;
