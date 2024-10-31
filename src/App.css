@@ -1,0 +1,8 @@
+.layout {
+  min-height: 100vh;
+}
+
+.todo-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
