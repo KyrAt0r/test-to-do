@@ -11,7 +11,8 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@hooks": ["src/hooks/index"],
-      "@interfaces": ["src/interfaces/index"]
+      "@interfaces": ["src/interfaces/index"],
+      "@shared/components": ["src/shared/components/index"]
     },
 
     /* Bundler mode */

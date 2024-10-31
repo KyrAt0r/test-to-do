@@ -8,8 +8,7 @@ import { useFilteredTasks, useTasks } from '@hooks';
 
 export const TodoApp = () => {
   const { tasks, addTask, toggleTask, deleteTask } = useTasks();
-  const { filteredTasks, filter, setFilter, completedCount, incompleteCount } =
-    useFilteredTasks(tasks);
+  const { filteredTasks, filter, setFilter, completedCount, incompleteCount } = useFilteredTasks(tasks);
 
   return (
     <div className='flex min-h-screen flex-col bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark'>

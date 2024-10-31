@@ -1,22 +1,37 @@
 import { Task } from '@interfaces';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const useTasks = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  const addTask = (text: string) => {
-    setTasks([...tasks, { text, completed: false }]);
+  // Загружаем задачи из localStorage один раз
+  const loadTasks = (): Task[] => {
+    try {
+      const storedTasks = localStorage.getItem('tasks');
+      return storedTasks ? JSON.parse(storedTasks) : [];
+    } catch {
+      return [];
+    }
   };
 
-  const toggleTask = (index: number) => {
-    setTasks(
-      tasks.map((task, idx) => (idx === index ? { ...task, completed: !task.completed } : task))
+  const [tasks, setTasks] = useState<Task[]>(loadTasks);
+
+  // Сохраняем задачи при изменении
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = useCallback((text: string) => {
+    setTasks((prevTasks) => [...prevTasks, { text, completed: false }]);
+  }, []);
+
+  const toggleTask = useCallback((index: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task, idx) => (idx === index ? { ...task, completed: !task.completed } : task))
     );
-  };
+  }, []);
 
-  const deleteTask = (index: number) => {
-    setTasks(tasks.filter((_, idx) => idx !== index));
-  };
+  const deleteTask = useCallback((index: number) => {
+    setTasks((prevTasks) => prevTasks.filter((_, idx) => idx !== index));
+  }, []);
 
   return { tasks, addTask, toggleTask, deleteTask };
 };
