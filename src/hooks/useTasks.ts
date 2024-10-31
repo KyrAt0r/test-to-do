@@ -2,7 +2,6 @@ import { Task } from '@interfaces';
 import { useCallback, useEffect, useState } from 'react';
 
 const useTasks = () => {
-  // Загружаем задачи из localStorage один раз
   const loadTasks = (): Task[] => {
     try {
       const storedTasks = localStorage.getItem('tasks');
@@ -14,7 +13,6 @@ const useTasks = () => {
 
   const [tasks, setTasks] = useState<Task[]>(loadTasks);
 
-  // Сохраняем задачи при изменении
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
