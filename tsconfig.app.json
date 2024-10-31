@@ -7,6 +7,9 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    /*Для Vitest*/
+    "types": ["vitest/globals"],
+
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/components/*"],
@@ -30,5 +33,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "src/setupTests.ts"]
 }
